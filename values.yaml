@@ -6,14 +6,31 @@ zeppelin:
       cpu: "2000m"
 
 hadoop:
-  useConfigMap: false
-  configMapName: hadoop-hadoop
-  configPath: /usr/hadoop-2.7.3/etc/hadoop
+  useConfigMap: true
+  configMapName: hadoop-xmls
+  configPath: /etc/hadoop/conf
 
 spark:
-  driverMemory: 1g
-  executorMemory: 1g
-  numExecutors: 2
+  useImage: true
+  download:
+    link: ""
+  image: 
+    tag: localhost:30100/spark:v2.3.3
+    path: /opt/spark
+  additionalJars:
+    enabled: false
+    claimName: dummy-pvc
+  sparkDefaults:
+    enabled: false
+    configMapName: spark-defaults
+  driver: 
+    host: localhost
+    port: 30321
+  env:
+  - name: FOO
+    value: "BAR"
+  submit_options: >-
+    ""
 
 ingress:
   enabled: false
@@ -27,5 +44,6 @@ ingress:
   tls: []
     # - secretName: zeppelin-tls-secret
     #   hosts: zeppelin.local
+
 
 nodeSelector: {}

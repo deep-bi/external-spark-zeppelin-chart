@@ -8,10 +8,18 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - port: 8080
     name: web
+  - name: spark-driver
+    nodePort: {{ .Values.spark.driver.port }}
+    port: {{ .Values.spark.driver.port }}
+    protocol: TCP
+  - name: spark-blkmgr
+    nodePort: 30322
+    port: 30322
+    protocol: TCP
   selector:
     app: {{ template "zeppelin.name" . }}
     release: {{ .Release.Name }}
