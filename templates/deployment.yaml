@@ -88,6 +88,7 @@ spec:
               name: hadoop-config
               defaultMode: 0777
 {{- end }}
+{{ toYaml .Values.zeppelin.mounts | indent 12 }} 
           resources:
 {{ toYaml .Values.zeppelin.resources | indent 12 }} 
           readinessProbe:
@@ -118,6 +119,7 @@ spec:
             name: {{ .Values.hadoop.configMapName }}
             defaultMode: 0777
 {{- end }}
+{{ toYaml .Values.zeppelin.volumes | indent 8 }} 
 {{- if .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}

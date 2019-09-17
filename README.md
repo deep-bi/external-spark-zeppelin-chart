@@ -21,6 +21,8 @@ The following table lists the configurable parameters of the Zeppelin chart and 
 | ------------------------------------ | ----------------------------------------------------------------- | ---------------------------------------------------------- |
 | `zeppelin.image`                     | Zeppelin image                                                    | `dylanmei/zeppelin:{VERSION}`                              |
 | `zeppelin.resources`                 | Resource limits and requests                                      | `limits.memory=4096Mi, limits.cpu=2000m`                   |
+| `zeppelin.mounts`                    | Additional volumes to mount                                       | mounts section of a pod                                    |
+| `zeppelin.volumes`                   | Additional volumes to mount                                       | volumes section of a pod                                   |
 | `hadoop.useConfigMap`                | Use external Hadoop configuration for Spark executors             | `false`                                                    |
 | `hadoop.configMapName`               | Name of the hadoop config map to use (must be in same namespace)  | `hadoop-config`                                            |
 | `hadoop.configPath`                  | Path in the Zeppelin image where the Hadoop config is mounted     | `/usr/hadoop-2.7.3/etc/hadoop`                             |

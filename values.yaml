@@ -1,4 +1,12 @@
 zeppelin:
+  # mounts:
+  # - mountPath: /zeppelin/mnt
+  #   name: name
+  #   defaultMode: 0777
+  # volumes:
+  # - name: name
+  #   persistentVolumeClaim:
+  #     claimName: pvc
   image: dylanmei/zeppelin:0.7.2
   resources:
     limits:
